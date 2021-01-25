@@ -40,8 +40,6 @@ function setup() {
   for (var j = 50; j <= width - 10; j = j + 50) {
     plinkos.push(new Plinko(j, 375));
   }
-
-  particle = new Particle(-300,-10,10);
 }
  
 function draw() {
@@ -69,10 +67,6 @@ function draw() {
     divisions[k].display();
   }
 
-  if(turn == 5){
-    gameState = "end";
-  }
-
   if(gameState == "end"){
     push();
     textSize(30);
@@ -93,9 +87,8 @@ function draw() {
           gameState = "end";
         }
       }
-      console.log(score);
 
-      if(particle.body.position.x < 600 && particle.body.position.x > 300){
+      else if(particle.body.position.x < 600 && particle.body.position.x > 300){
         score = score + 200;
         particle = null;
         if(turn >= 5){
@@ -103,7 +96,7 @@ function draw() {
         }
       }
 
-      if(particle.body.position.x > 601 && particle.body.position.x < 900){
+      else if(particle.body.position.x > 601 && particle.body.position.x < 900){
         score = score + 100;
         particle = null;
         if(turn >= 5){
